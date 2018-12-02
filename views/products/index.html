@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="row">
+        {% for p in products %}
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="/public/images/{{ p.picture }}" alt="{{ p.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ p.name }}</h5>
+                    <p class="card-text">{{ p.description }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            {% for c in p.categories %}
+                            <a href="#" class="mr-1 btn btn-sm btn-{{ c.color }}">{{ c.name }}</a>
+                            {% endfor %}
+                        </div>
+                        <small class="text-muted">{{ p.price }} €</small>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="btn-group">
+                        <a href="/products/show/{{ p._id }}" class="btn btn-sm btn-outline-secondary">View</a>
+                        <a href="/products/edit/{{ p._id }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

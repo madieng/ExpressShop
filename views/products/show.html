@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="row p-2">
+    <div class="col-3 border-bottom"><label>Nom</label></div>
+    <div class="col-3 border-bottom"><img class="card-img-top" src="/public/images/{{ product.picture }}" alt="{{ product.name }}"></div>
+</div>
+<div class="row p-2">
+    <div class="col-3 border-bottom"><label>Prix</label></div>
+    <div class="col-3 border-bottom">{{ product.price }}</div>
+</div>
+<div class="row p-2">
+    <div class="col-3 border-bottom"><label>Description</label></div>
+    <div class="col-3 border-bottom">{{ product.description }}</div>
+</div>
+<div class="row p-2">
+    <div class="col-3 border-bottom"><label>Catégories</label></div>
+    <div class="col-3 border-bottom">
+        {% for c in product.categories %}
+        <p><a href="#" class="btn btn-sm btn-{{ c.color }}">{{ c.name }}</a></p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
